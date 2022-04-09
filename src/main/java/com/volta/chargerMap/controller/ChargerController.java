@@ -23,14 +23,18 @@ public class ChargerController {
     private ChargerService chargerService;
     
     @GetMapping("/charger")
-    public ResponseEntity<Iterable<Charger>> retrieveChargerPosition(@RequestParam(required=false) String longitude, @RequestParam(required=false) String latitude) {
+    public ResponseEntity<Iterable<Charger>> retrieveChargerLon(@RequestParam(required=false) String longitude) {
 
         Iterable<Charger> response = chargerService.retrieveChargerLong(longitude);
-        response = chargerService.retrieveChargerLat(latitude);
         return ResponseEntity.ok().body(response);
     }
+    /*@GetMapping("/charger")
+    public ResponseEntity<Iterable<Charger>> retrieveChargerLat(@RequestParam(required=false) String latitude) {
 
-   /* @PostMapping("/chargers")
+        Iterable<Charger> response = chargerService.retrieveChargerLat(latitude);
+        return ResponseEntity.ok().body(response);
+    }
+    @PostMapping("/chargers")
     public ResponseEntity<Charger> createCharger(@RequestBody Charger charger) {
         Charger newCharger = chargerService.createCharger(charger);
         return ResponseEntity.ok().body(newCharger);
